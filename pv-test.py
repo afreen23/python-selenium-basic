@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 browser = webdriver.Chrome(executable_path="./drivers/chromedriver")
 browser.file_detector = UselessFileDetector()
 browser.get('http://localhost:9000/k8s/cluster/storageclasses/~new/form')
-sleep(15)
+sleep(30)
 
 # select provisioner
 provisioner = browser.find_element(By.ID,'storage-class-provisioner')
@@ -54,15 +54,21 @@ browser.find_element(By.CSS_SELECTOR, 'button[data-test="kms-advanced-settings-l
 sleep(5)
 
 
+# wait = WebDriverWait(browser, 30)
+# element = wait.until(ec.element_to_be_clickable((By.XPATH, "(//input[@type='file'])[1]")))
+# element.send_keys('/home/wiz/workspace/python-selenium-basic/dummy.pem')
+
+
+
 # click .pem file
-file_input = browser.find_element(By.XPATH, '//*[@id="modal-container"]/div/div/div/form/div/div[2]/div/div/div[4]/div[2]/div/input')
+file_input = browser.find_element(By.XPATH, "(//input[@type='file'])[1]")
 file_input.send_keys('/home/wiz/workspace/python-selenium-basic/dummy.pem')
 
-file_input = browser.find_element(By.XPATH, '//*[@id="modal-container"]/div/div/div/form/div/div[2]/div/div/div[5]/div[2]/div/input')
+file_input = browser.find_element(By.XPATH, "(//input[@type='file'])[2]")
 file_input.send_keys('/home/wiz/workspace/python-selenium-basic/dummy.pem')
 
 
-file_input = browser.find_element(By.XPATH, '//*[@id="modal-container"]/div/div/div/form/div/div[2]/div/div/div[6]/div[2]/div/input')
+file_input = browser.find_element(By.XPATH, "(//input[@type='file'])[3]")
 file_input.send_keys('/home/wiz/workspace/python-selenium-basic/dummy.pem')
 
 sleep(10)
